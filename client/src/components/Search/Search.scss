@@ -1,0 +1,36 @@
+.search {
+  padding: 6px 16px;
+  &__container {
+    background: #F7F7F8;
+    border-radius: 16px;
+    position: relative;
+    height: 40px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+  }
+  input {
+    position: absolute;
+    left: 44px;
+    background-color: transparent;
+    color: #050510;
+    border: none;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    caret-color: #6534FF;
+    &:focus {
+      outline: none;
+    }
+  }
+  .search--icon {
+    position: absolute;
+    left: 14px;
+  }
+  .sort--icon {
+    align-items: flex-end;
+    position: absolute;
+    right: 14px;
+  }
+
+}
