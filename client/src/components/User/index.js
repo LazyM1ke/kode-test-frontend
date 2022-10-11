@@ -1,12 +1,12 @@
 import './User.scss'
 
-function User() {
+function User({firstName, lastName, userTag, position, avatarUrl}) {
     return (
         <div className="user">
-            <img src="https://api.lorem.space/image/face?w=120&h=120" alt="avatar" className="user__avatar"/>
+            <img src={avatarUrl} alt="avatar" className="user__avatar"/>
             <div className='user__title'>
-                <div className="user__title-name">Алексей Миногаров <span className="user__title-tag">mi</span></div>
-                <div className="user__title-department">Analyst</div>
+                <div className="user__title-name">{firstName} {lastName} <span className="user__title-tag">{userTag}</span></div>
+                <div className="user__title-department">{position}</div>
             </div>
         </div>
     );

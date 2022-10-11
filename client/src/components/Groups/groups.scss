@@ -1,5 +1,6 @@
 .groups {
   border-bottom: 0.33px #C3C3C6 solid;
+  
   ul {
     list-style: none;
     display: flex;
@@ -14,14 +15,10 @@
       color: #97979B;
       font-size: 15px;
       font-weight: 600;
-      line-height: 20px;
-      &:active {
-        border-bottom: 2px solid #6534FF;
-      }
-      .active {
-        border-bottom: 2px solid #6534FF;
-
-      }
+      line-height: 20px; 
     }
+  }
+  .active {
+    border-bottom: 2px solid #6534FF;
   }
 }

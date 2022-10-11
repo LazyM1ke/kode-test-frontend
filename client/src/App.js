@@ -1,13 +1,17 @@
 import './App.scss';
-import Search from "./components/Search";
-import Groups from "./components/Groups";
-import User from "./components/User";
 import Home from "./pages/Home";
+import Error from "./components/Error";
+import TopAppBar from "./components/TopAppBar";
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-        <Home/>
+      <TopAppBar/>
+      <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route path='*' element={<Error/>} />
+      </Routes>
     </div>
   );
 }
