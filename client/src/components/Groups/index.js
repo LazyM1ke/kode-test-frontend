@@ -3,36 +3,22 @@ import {filterSlice} from '../../redux/reducers/filterSlice';
 import './groups.scss'
 
 function Groups() {
-
-    const groups = [
-        'Все',
-        'Android', 
-        'IOS', 
-        'Дизайн', 
-        'Менеджмент', 
-        'QA', 
-        'Бэк-офис', 
-        'Frontend', 
-        'HR',
-        'PR', 
-        'Backend',
-        'Техподдержка',
-        'Аналитика'
-    ];
-
     
-
-
     const dispatch = useDispatch();
-    const {activeGroupName} = useSelector(state => state.filterReducer);
-    const {setActiveGroupName} = filterSlice.actions
+    const {activeGroupName, groups} = useSelector(state => state.filterReducer);
+    const {setActiveGroupValue, setActiveGroupName} = filterSlice.actions
+
+    function handleOnGroupClick(group) {
+        dispatch(setActiveGroupName(group.name))
+        dispatch(setActiveGroupValue(group.value))
+    }
 
     return (
         <div className="groups">
             <ul>
-                {groups.map((groupName,i) => (
-                            <li onClick={() => dispatch(setActiveGroupName(groupName))} key={i} className={activeGroupName === groupName ? "active" : ""}>
-                                {groupName}
+                {groups.map((group, i) => (
+                            <li onClick={() => handleOnGroupClick(group)} key={i} className={activeGroupName === group.name ? "active" : ""}>
+                                {group.name}
                             </li>
                     )
                 )}

@@ -1,10 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
-import { useSelector } from "react-redux";
-import {filterReducer} from "../reducers/filterSlice"
 
-export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
-   const response = await axios.get(`https://stoplight.io/mocks/kode-frontend-team/koder-stoplight/86566464/users?__example=all`)
+export const fetchUsers = createAsyncThunk('users/fetchUsers', async (groupValue, thunkAPI) => {
+   const response = await axios.get(`https://stoplight.io/mocks/kode-frontend-team/koder-stoplight/86566464/users?__example=${groupValue}`)
             .then((res) => {return res.data.items})
     return response
 }
@@ -15,7 +13,9 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
 
 const initialState = {
     users: [],
-    isLoading: false,
+    status: 'loading',
+    details: {
+    },
     error: '',
 }
 
@@ -23,19 +23,25 @@ export const userSlice = createSlice({
     name: 'users',
     initialState,
     reducers: {
-
+        setDetails(state, action) {
+            state.details = action.payload
+            localStorage.setItem('userId', action.payload.id);
+        }
+        
     },
     extraReducers: {
+        
         [fetchUsers.pending]: (state, action) => {
-            state.isLoading = true
+            state.users = []
+            state.status = 'loading'
         },
         [fetchUsers.fulfilled]: (state, action) => {
-            state.isLoading = false
+            state.status = 'success'
             state.error = ''
             state.users = action.payload
         },
         [fetchUsers.rejected]: (state, action) => {
-            state.isLoading = false
+            state.status = 'error'
             state.error = action.payload
         }
     }

@@ -1,17 +1,18 @@
 
 .user {
-  width: 100%;
+  width: 18rem;
   display: flex;
   align-items: center;
   gap: 16px;
   margin-top: 22px;
-
+  cursor: pointer;
 
   &__avatar {
     width: 75px;
     border-radius: 50%;
   }
   &__title {
+    
 
       &-name {
         color: #050510;
